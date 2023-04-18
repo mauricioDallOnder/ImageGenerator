@@ -53,7 +53,7 @@ export default function CreatePost() {
   if (form.prompt) {
     try {
       setIsGenerateImg(true);
-      const response = await axios.post('image-generator-umber.vercel.app/api/routes/OpenIARoutes', {
+      const response = await axios.post('https://image-generator-3es7mfyqc-mauriciodallonder.vercel.app/api/routes/OpenIARoutes', {
         prompt: form.prompt,
       });
       const data = response.data;
