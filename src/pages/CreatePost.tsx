@@ -49,25 +49,24 @@ export default function CreatePost() {
     }
   };
 
-  async function generateImg(){
-    if(form.prompt){
-      try {
-        setIsGenerateImg(true)
-        const response = await axios.post('http://localhost:3000/api/routes/OpenIARoutes',{
-          prompt: form.prompt,
-        });
-        const data = response.data;
-        setForm({ ... form, photo:`${data.photo}`})
-  
-      } catch (error) {
-        alert(error)
-      } finally{
-        setIsGenerateImg(false)
-      }
-    } else{
-      alert('Por favor digite uma frase para gerar a imagem')
+ async function generateImg() {
+  if (form.prompt) {
+    try {
+      setIsGenerateImg(true);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/routes/OpenIARoutes`, {
+        prompt: form.prompt,
+      });
+      const data = response.data;
+      setForm({ ...form, photo: `${data.photo}` });
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsGenerateImg(false);
     }
+  } else {
+    alert("Por favor digite uma frase para gerar a imagem");
   }
+}
 
   return (
     <section className="max-w-7xl mx-auto  ">
